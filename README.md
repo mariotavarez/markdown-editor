@@ -1,44 +1,45 @@
-# markdown-editor
+<div align="center">
 
-> Write markdown. See it live. Export anywhere.
+# MarkFlow
 
-![React 19](https://img.shields.io/badge/React-19-61dafb?style=flat-square&logo=react)
-![TypeScript 5.7](https://img.shields.io/badge/TypeScript-5.7-3178c6?style=flat-square&logo=typescript)
-![Tailwind v4](https://img.shields.io/badge/Tailwind_CSS-v4-06b6d4?style=flat-square&logo=tailwindcss)
-![Vite 6.2](https://img.shields.io/badge/Vite-6.2-646cff?style=flat-square&logo=vite)
+**Write in Markdown. See it rendered. Ship it anywhere.**
+
+A distraction-free Markdown editor with a live split-pane preview, toolbar shortcuts, and one-click export to HTML or `.md` — all in the browser, no account required.
+
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-4.1-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![Vite](https://img.shields.io/badge/Vite-6.2-646CFF?logo=vite&logoColor=white)](https://vitejs.dev)
 
 ![ Demo](.github/demo.gif)
 
-A polished, real-time markdown editor with split-pane preview, formatting toolbar, and one-click export — built entirely with modern web standards.
+</div>
+
+---
+
+## What is MarkFlow?
+
+A Markdown editor that gets out of the way. Type on the left, see a pixel-perfect rendered preview on the right — live, with zero lag. Toolbar buttons handle the formatting you always forget the syntax for. Export when you're done.
+
+Built to showcase a clean React 19 component architecture with custom hooks, dark theming, and precise TypeScript 5.7 typing.
+
+```bash
+git clone https://github.com/mariotavarez/markdown-editor.git
+cd markdown-editor && npm install && npm run dev
+```
 
 ---
 
 ## Features
 
-- **Split-pane layout** — editor on the left, live preview on the right with a draggable resizer
-- **Live preview** — renders markdown to styled HTML in real-time via `marked`
-- **Formatting toolbar** — Bold, Italic, H1/H2/H3, Link, Image, Inline Code, Code Block, Blockquote, Unordered List, Ordered List, Horizontal Rule, Table
-- **Cursor-aware insertions** — wraps selected text or inserts with a placeholder when nothing is selected
-- **Dark / Light mode** — toggle in the header, persisted to `localStorage`
-- **Word & char count** — live stats (words, characters, chars without spaces, line count) in the status bar
-- **Export as HTML** — downloads a fully self-contained HTML file with embedded styles
-- **Export as Markdown** — downloads the raw `.md` file
-- **Copy HTML** — copies rendered HTML to clipboard with visual confirmation
-- **Fullscreen modes** — expand editor-only or preview-only via the header controls
-- **Sample content** — "Load example" fills the editor with a rich markdown showcase
-- **Line numbers** — monospace editor with synchronized line numbers
-- **Keyboard shortcuts** — see table below
-
----
-
-## Keyboard Shortcuts
-
-| Shortcut | Action |
-|----------|--------|
-| `Ctrl+B` / `Cmd+B` | Bold |
-| `Ctrl+I` / `Cmd+I` | Italic |
-| `Ctrl+K` / `Cmd+K` | Insert link |
-| `Tab` | Indent (2 spaces) |
+- **Split-pane editor** — editor and preview side by side, both scrollable independently
+- **Live preview** — renders as you type with full CommonMark support
+- **Formatting toolbar** — Bold, Italic, Heading, Link, Code, Code Block, Blockquote, List
+- **Dark / Light theme** — toggle with one click, persisted in localStorage
+- **Export to HTML** — downloads a standalone `.html` file with inline styles
+- **Export to Markdown** — downloads the raw `.md` source file
+- **Status bar** — word count, character count, line count, read time estimate
+- **Keyboard shortcuts** — `Ctrl+B` bold, `Ctrl+I` italic, `Ctrl+K` link, and more
 
 ---
 
@@ -51,60 +52,59 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173) in your browser.
+Open [http://localhost:5173](http://localhost:5173)
 
-### Build for production
+---
 
-```bash
-npm run build
-npm run preview
+## Structure
+
 ```
+src/
+├── components/
+│   ├── Header.tsx          # app header with theme toggle and export menu
+│   ├── Toolbar.tsx         # formatting button row
+│   ├── ToolbarButton.tsx   # individual toolbar button with tooltip
+│   ├── Editor.tsx          # textarea with tab-key handling
+│   ├── Preview.tsx         # rendered HTML preview pane
+│   ├── ExportMenu.tsx      # dropdown with HTML and Markdown export options
+│   └── StatusBar.tsx       # word/char/line count + read time
+├── hooks/
+│   ├── useEditor.ts        # cursor position, tab insertion, undo stack
+│   ├── useMarkdown.ts      # Markdown-to-HTML rendering
+│   ├── useExport.ts        # download-as-HTML and download-as-MD logic
+│   └── useTheme.ts         # dark/light toggle with localStorage persistence
+└── data/sampleContent.ts   # default document shown on first load
+```
+
+---
+
+## Toolbar Shortcuts
+
+| Button | Keyboard | Inserts |
+|--------|----------|---------|
+| **Bold** | `Ctrl+B` | `**text**` |
+| *Italic* | `Ctrl+I` | `*text*` |
+| Heading | — | `## text` |
+| Link | `Ctrl+K` | `[text](url)` |
+| Inline code | — | `` `code` `` |
+| Code block | — | ` ```\ncode\n``` ` |
+| Blockquote | — | `> text` |
+| List item | — | `- text` |
 
 ---
 
 ## Tech Stack
 
-| Package | Version | Role |
-|---------|---------|------|
-| `react` | ^19.0.0 | UI framework |
-| `typescript` | ^5.7.0 | Type safety |
-| `vite` | ^6.2.0 | Dev server & bundler |
-| `tailwindcss` | ^4.1.0 | Utility-first styling |
-| `@tailwindcss/vite` | ^4.1.0 | Tailwind v4 Vite plugin |
-| `marked` | ^12.0.0 | Markdown → HTML parsing |
-| `lucide-react` | ^0.468.0 | Icons |
-| `clsx` | ^2.1.0 | Conditional classnames |
-
----
-
-## Project Structure
-
-```
-src/
-├── components/
-│   ├── Editor.tsx           # Textarea with line numbers
-│   ├── Preview.tsx          # Styled HTML output
-│   ├── Toolbar.tsx          # Formatting button row
-│   ├── ToolbarButton.tsx    # Icon button with tooltip
-│   ├── StatusBar.tsx        # Word / char / line stats
-│   ├── Header.tsx           # Title, theme toggle, export
-│   └── ExportMenu.tsx       # Export dropdown
-├── hooks/
-│   ├── useMarkdown.ts       # Parse markdown with marked
-│   ├── useEditor.ts         # Editor state & keyboard shortcuts
-│   ├── useTheme.ts          # Dark/light with localStorage
-│   └── useExport.ts         # File download & clipboard
-├── utils/
-│   ├── insertMarkdown.ts    # Cursor-aware markdown insertion
-│   └── wordCount.ts         # Stats computation
-├── data/
-│   └── sampleContent.ts     # Rich sample document
-├── App.tsx
-└── main.tsx
-```
+| Technology | Version | Purpose |
+|---|---|---|
+| React | 19 | UI framework |
+| TypeScript | 5.7 | Strict type safety |
+| Tailwind CSS | v4 | Vite plugin — zero config |
+| Lucide React | 0.344 | Toolbar icons |
+| Vite | 6.2 | Build tool |
 
 ---
 
 ## License
 
-MIT © Mario Tavarez
+MIT © [Mario Tavarez](https://github.com/mariotavarez)
