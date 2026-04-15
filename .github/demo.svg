@@ -1,131 +1,173 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="740" height="440" viewBox="0 0 740 440">
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="480" viewBox="0 0 800 480">
   <defs>
-    <style>
-      .bg { fill: #111827; }
-      .panel { fill: #1f2937; }
-      .toolbar { fill: #1f2937; }
-      .header { fill: #111827; }
-      .mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; }
-      .sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-      .dim { fill: #4b5563; }
-      .muted { fill: #6b7280; }
-      .light { fill: #d1d5db; }
-      .white { fill: #f9fafb; }
-      .purple { fill: #a78bfa; }
-      .green { fill: #34d399; }
-      .blue { fill: #60a5fa; }
-      .heading { fill: #f9fafb; font-weight: 700; }
-      .code-bg { fill: #0d1117; }
-    </style>
+    <linearGradient id="sidebarGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#18181f"/>
+      <stop offset="100%" stop-color="#1a1a22"/>
+    </linearGradient>
+    <linearGradient id="btnGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#4f46e5"/>
+    </linearGradient>
+    <filter id="btnShadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#6366f130"/>
+    </filter>
+    <filter id="cardShadow">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#00000040"/>
+    </filter>
   </defs>
 
-  <!-- Background -->
-  <rect width="740" height="440" rx="12" class="bg"/>
+  <!-- Browser chrome -->
+  <rect width="800" height="480" rx="12" fill="#1a1a24"/>
+  <rect width="800" height="36" rx="12" fill="#222230"/>
+  <rect y="24" width="800" height="12" fill="#222230"/>
+  <circle cx="20" cy="18" r="5.5" fill="#ff5f57"/>
+  <circle cx="38" cy="18" r="5.5" fill="#febc2e"/>
+  <circle cx="56" cy="18" r="5.5" fill="#28c840"/>
+  <rect x="148" y="8" width="504" height="20" rx="10" fill="#14141e"/>
+  <rect x="148" y="8" width="504" height="20" rx="10" fill="none" stroke="#2a2a3a" stroke-width="1"/>
+  <text x="400" y="22" font-family="-apple-system, sans-serif" font-size="11" fill="#4b5280" text-anchor="middle">localhost:5173 — MarkFlow</text>
 
-  <!-- Header bar -->
-  <rect width="740" height="40" class="header"/>
-  <text x="20" y="25" class="sans white" font-size="14" font-weight="700">MarkFlow</text>
-  <text x="100" y="25" class="sans muted" font-size="12">Write in Markdown. See it rendered. Ship it anywhere.</text>
+  <!-- App bg -->
+  <rect y="36" width="800" height="444" fill="#0e0e16"/>
+
+  <!-- Header -->
+  <rect y="36" width="800" height="48" fill="#13131e"/>
+  <rect y="83" width="800" height="1" fill="#1e1e2e"/>
+  <!-- Logo mark -->
+  <rect x="18" y="47" width="28" height="26" rx="6" fill="#1e1e30"/>
+  <rect x="18" y="47" width="28" height="26" rx="6" fill="none" stroke="#2d2d48" stroke-width="1"/>
+  <text x="32" y="64" font-family="'SF Mono', monospace" font-size="12" font-weight="700" fill="#818cf8" text-anchor="middle">M↓</text>
+  <text x="56" y="64" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="600" fill="#e2e8f0">MarkFlow</text>
+
+  <!-- Header actions right -->
+  <rect x="560" y="48" width="72" height="26" rx="6" fill="#1a1a28"/>
+  <rect x="560" y="48" width="72" height="26" rx="6" fill="none" stroke="#2a2a3a" stroke-width="1"/>
+  <text x="596" y="65" font-family="-apple-system, sans-serif" font-size="11" fill="#6b7280" text-anchor="middle">Load example</text>
   <!-- Theme toggle -->
-  <rect x="594" y="10" width="60" height="22" rx="11" fill="#374151"/>
-  <circle cx="606" cy="21" r="9" fill="#6b7280"/>
-  <text x="620" y="25" class="sans muted" font-size="11">Dark</text>
-  <!-- Export button -->
-  <rect x="660" y="10" width="64" height="22" rx="6" fill="#4f46e5"/>
-  <text x="692" y="25" class="sans white" font-size="11" text-anchor="middle">Export</text>
+  <rect x="642" y="48" width="48" height="26" rx="13" fill="#1a1a28"/>
+  <rect x="642" y="48" width="48" height="26" rx="13" fill="none" stroke="#2a2a3a" stroke-width="1"/>
+  <circle cx="656" cy="61" r="10" fill="#2a2a3c"/>
+  <text x="675" y="65" font-family="-apple-system, sans-serif" font-size="10" fill="#4b5280">☀</text>
+  <!-- Export -->
+  <rect x="700" y="48" width="82" height="26" rx="6" fill="url(#btnGrad)" filter="url(#btnShadow)"/>
+  <text x="741" y="65" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="white" text-anchor="middle">↓ Export</text>
 
   <!-- Toolbar -->
-  <rect y="40" width="740" height="32" class="toolbar"/>
-  <line x1="0" y1="40" x2="740" y2="40" stroke="#374151" stroke-width="1"/>
-  <line x1="0" y1="72" x2="740" y2="72" stroke="#374151" stroke-width="1"/>
+  <rect y="84" width="800" height="36" fill="#111119"/>
+  <rect y="119" width="800" height="1" fill="#1e1e2e"/>
   <!-- Toolbar buttons -->
-  <rect x="12" y="48" width="22" height="16" rx="3" fill="#374151"/>
-  <text x="23" y="60" class="sans white" font-size="11" font-weight="700" text-anchor="middle">B</text>
-  <rect x="40" y="48" width="22" height="16" rx="3" fill="#374151"/>
-  <text x="51" y="60" class="sans" fill="#d1d5db" font-size="11" font-style="italic" text-anchor="middle">I</text>
-  <rect x="68" y="48" width="22" height="16" rx="3" fill="#374151"/>
-  <text x="79" y="60" class="sans" fill="#d1d5db" font-size="11" font-weight="700" text-anchor="middle">H</text>
-  <line x1="100" y1="48" x2="100" y2="64" stroke="#374151" stroke-width="1"/>
-  <rect x="108" y="48" width="22" height="16" rx="3" fill="#374151"/>
-  <text x="119" y="60" class="sans" fill="#60a5fa" font-size="10" text-anchor="middle">link</text>
-  <rect x="136" y="48" width="22" height="16" rx="3" fill="#374151"/>
-  <text x="147" y="60" class="mono" fill="#d1d5db" font-size="10" text-anchor="middle">`c`</text>
-  <line x1="168" y1="48" x2="168" y2="64" stroke="#374151" stroke-width="1"/>
-  <rect x="176" y="48" width="22" height="16" rx="3" fill="#374151"/>
-  <text x="187" y="60" class="sans" fill="#d1d5db" font-size="10" text-anchor="middle">"</text>
-  <rect x="204" y="48" width="22" height="16" rx="3" fill="#374151"/>
-  <text x="215" y="60" class="sans" fill="#d1d5db" font-size="10" text-anchor="middle">-</text>
+  <rect x="16" y="92" width="28" height="20" rx="4" fill="#1e1e2e"/>
+  <text x="30" y="106" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#e2e8f0" text-anchor="middle">B</text>
+  <rect x="50" y="92" width="28" height="20" rx="4" fill="#1e1e2e"/>
+  <text x="64" y="106" font-family="-apple-system, sans-serif" font-size="12" fill="#e2e8f0" font-style="italic" text-anchor="middle">I</text>
+  <rect x="84" y="92" width="28" height="20" rx="4" fill="#1e1e2e"/>
+  <text x="98" y="106" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#e2e8f0" text-anchor="middle">H₂</text>
+  <line x1="122" y1="94" x2="122" y2="112" stroke="#2a2a3a" stroke-width="1"/>
+  <rect x="130" y="92" width="28" height="20" rx="4" fill="#1e1e2e"/>
+  <text x="144" y="106" font-family="-apple-system, sans-serif" font-size="11" fill="#60a5fa" text-anchor="middle">⌘K</text>
+  <rect x="164" y="92" width="28" height="20" rx="4" fill="#1e1e2e"/>
+  <text x="178" y="106" font-family="'SF Mono', monospace" font-size="10" fill="#e2e8f0" text-anchor="middle">`c`</text>
+  <rect x="198" y="92" width="28" height="20" rx="4" fill="#1e1e2e"/>
+  <text x="212" y="106" font-family="'SF Mono', monospace" font-size="10" fill="#e2e8f0" text-anchor="middle">```</text>
+  <line x1="236" y1="94" x2="236" y2="112" stroke="#2a2a3a" stroke-width="1"/>
+  <rect x="244" y="92" width="28" height="20" rx="4" fill="#1e1e2e"/>
+  <text x="258" y="106" font-family="-apple-system, sans-serif" font-size="11" fill="#e2e8f0" text-anchor="middle">"</text>
+  <rect x="278" y="92" width="28" height="20" rx="4" fill="#1e1e2e"/>
+  <text x="292" y="106" font-family="-apple-system, sans-serif" font-size="11" fill="#e2e8f0" text-anchor="middle">—</text>
+  <!-- Kbd hint -->
+  <rect x="640" y="92" width="56" height="20" rx="4" fill="#1a1a26"/>
+  <text x="668" y="106" font-family="-apple-system, sans-serif" font-size="9" fill="#3d3d5c" text-anchor="middle">Ctrl+B bold</text>
 
-  <!-- Editor pane (left) -->
-  <rect x="0" y="72" width="370" height="368" class="panel"/>
-  <text x="12" y="90" class="sans muted" font-size="10" font-weight="600">EDITOR</text>
-  <!-- Line numbers -->
-  <rect x="0" y="72" width="28" height="368" fill="#111827"/>
-  <text x="14" y="104" class="mono dim" font-size="11" text-anchor="middle">1</text>
-  <text x="14" y="120" class="mono dim" font-size="11" text-anchor="middle">2</text>
-  <text x="14" y="136" class="mono dim" font-size="11" text-anchor="middle">3</text>
-  <text x="14" y="152" class="mono dim" font-size="11" text-anchor="middle">4</text>
-  <text x="14" y="168" class="mono dim" font-size="11" text-anchor="middle">5</text>
-  <text x="14" y="184" class="mono dim" font-size="11" text-anchor="middle">6</text>
-  <text x="14" y="200" class="mono dim" font-size="11" text-anchor="middle">7</text>
-  <text x="14" y="216" class="mono dim" font-size="11" text-anchor="middle">8</text>
-  <text x="14" y="232" class="mono dim" font-size="11" text-anchor="middle">9</text>
-  <text x="14" y="248" class="mono dim" font-size="11" text-anchor="middle">10</text>
-  <text x="14" y="264" class="mono dim" font-size="11" text-anchor="middle">11</text>
-  <text x="14" y="280" class="mono dim" font-size="11" text-anchor="middle">12</text>
+  <!-- Editor pane -->
+  <rect x="0" y="120" width="380" height="320" fill="#0b0b12"/>
+  <!-- Line numbers column -->
+  <rect x="0" y="120" width="32" height="320" fill="#0e0e16"/>
+  <text x="16" y="142" font-family="'SF Mono', monospace" font-size="10.5" fill="#2d2d48" text-anchor="middle">1</text>
+  <text x="16" y="158" font-family="'SF Mono', monospace" font-size="10.5" fill="#2d2d48" text-anchor="middle">2</text>
+  <text x="16" y="174" font-family="'SF Mono', monospace" font-size="10.5" fill="#2d2d48" text-anchor="middle">3</text>
+  <text x="16" y="190" font-family="'SF Mono', monospace" font-size="10.5" fill="#2d2d48" text-anchor="middle">4</text>
+  <text x="16" y="206" font-family="'SF Mono', monospace" font-size="10.5" fill="#2d2d48" text-anchor="middle">5</text>
+  <text x="16" y="222" font-family="'SF Mono', monospace" font-size="10.5" fill="#2d2d48" text-anchor="middle">6</text>
+  <text x="16" y="238" font-family="'SF Mono', monospace" font-size="10.5" fill="#2d2d48" text-anchor="middle">7</text>
+  <text x="16" y="254" font-family="'SF Mono', monospace" font-size="10.5" fill="#2d2d48" text-anchor="middle">8</text>
+  <text x="16" y="270" font-family="'SF Mono', monospace" font-size="10.5" fill="#2d2d48" text-anchor="middle">9</text>
+  <text x="14" y="286" font-family="'SF Mono', monospace" font-size="10.5" fill="#2d2d48" text-anchor="middle">10</text>
+  <text x="14" y="302" font-family="'SF Mono', monospace" font-size="10.5" fill="#2d2d48" text-anchor="middle">11</text>
+  <text x="14" y="318" font-family="'SF Mono', monospace" font-size="10.5" fill="#2d2d48" text-anchor="middle">12</text>
+  <text x="14" y="334" font-family="'SF Mono', monospace" font-size="10.5" fill="#2d2d48" text-anchor="middle">13</text>
   <!-- Editor content -->
-  <text x="36" y="104" class="mono purple" font-size="12"># Getting Started</text>
-  <text x="36" y="120" class="mono light" font-size="12"> </text>
-  <text x="36" y="136" class="mono light" font-size="12">Welcome to **MarkFlow**, a fast,</text>
-  <text x="36" y="152" class="mono light" font-size="12">distraction-free Markdown editor.</text>
-  <text x="36" y="168" class="mono light" font-size="12"> </text>
-  <text x="36" y="184" class="mono purple" font-size="12">## Features</text>
-  <text x="36" y="200" class="mono light" font-size="12"> </text>
-  <text x="36" y="216" class="mono light" font-size="12">- Live split-pane preview</text>
-  <text x="36" y="232" class="mono light" font-size="12">- Formatting toolbar</text>
-  <text x="36" y="248" class="mono light" font-size="12">- Export to HTML or `.md`</text>
-  <text x="36" y="264" class="mono light" font-size="12"> </text>
-  <text x="36" y="280" class="mono muted" font-size="12">```javascript</text>
-  <text x="36" y="296" class="mono green" font-size="12">const</text><text x="70" y="296" class="mono light" font-size="12"> msg = </text><text x="112" y="296" class="mono" fill="#fbbf24" font-size="12">'hello world'</text>
-  <text x="36" y="312" class="mono muted" font-size="12">```</text>
+  <text x="44" y="142" font-family="'SF Mono', monospace" font-size="11.5" fill="#818cf8"># Getting Started</text>
+  <text x="44" y="174" font-family="'SF Mono', monospace" font-size="11.5" fill="#94a3b8">Welcome to </text>
+  <text x="44" y="174" font-family="'SF Mono', monospace" font-size="11.5" fill="#94a3b8">Welcome to </text>
+  <text x="148" y="174" font-family="'SF Mono', monospace" font-size="11.5" fill="#e2e8f0">**MarkFlow**</text>
+  <text x="230" y="174" font-family="'SF Mono', monospace" font-size="11.5" fill="#94a3b8">, a fast,</text>
+  <text x="44" y="190" font-family="'SF Mono', monospace" font-size="11.5" fill="#94a3b8">distraction-free editor.</text>
+  <text x="44" y="222" font-family="'SF Mono', monospace" font-size="11.5" fill="#818cf8">## Features</text>
+  <text x="44" y="254" font-family="'SF Mono', monospace" font-size="11.5" fill="#94a3b8">- Live split-pane preview</text>
+  <text x="44" y="270" font-family="'SF Mono', monospace" font-size="11.5" fill="#94a3b8">- Formatting toolbar</text>
+  <text x="44" y="286" font-family="'SF Mono', monospace" font-size="11.5" fill="#94a3b8">- Export to </text>
+  <text x="130" y="286" font-family="'SF Mono', monospace" font-size="11.5" fill="#4ade80">`HTML`</text>
+  <text x="175" y="286" font-family="'SF Mono', monospace" font-size="11.5" fill="#94a3b8"> or </text>
+  <text x="196" y="286" font-family="'SF Mono', monospace" font-size="11.5" fill="#4ade80">`.md`</text>
+  <text x="44" y="318" font-family="'SF Mono', monospace" font-size="11.5" fill="#6366f1">```javascript</text>
+  <text x="44" y="334" font-family="'SF Mono', monospace" font-size="11.5" fill="#fb923c">const</text>
+  <text x="88" y="334" font-family="'SF Mono', monospace" font-size="11.5" fill="#e2e8f0"> msg = </text>
+  <text x="140" y="334" font-family="'SF Mono', monospace" font-size="11.5" fill="#fbbf24">'hello'</text>
+  <text x="44" y="350" font-family="'SF Mono', monospace" font-size="11.5" fill="#6366f1">```</text>
   <!-- Cursor -->
-  <rect x="85" y="299" width="2" height="14" fill="#a78bfa"/>
+  <rect x="64" y="337" width="2" height="14" fill="#6366f1"/>
 
   <!-- Divider -->
-  <rect x="369" y="72" width="2" height="368" fill="#374151"/>
+  <rect x="379" y="120" width="2" height="320" fill="#1e1e2e"/>
 
-  <!-- Preview pane (right) -->
-  <rect x="371" y="72" width="369" height="368" fill="#111827"/>
-  <text x="383" y="90" class="sans muted" font-size="10" font-weight="600">PREVIEW</text>
-  <!-- Rendered content -->
-  <text x="383" y="112" class="sans heading" font-size="18">Getting Started</text>
-  <line x1="383" y1="116" x2="720" y2="116" stroke="#374151" stroke-width="1"/>
-  <text x="383" y="132" class="sans light" font-size="12">Welcome to </text>
-  <text x="458" y="132" class="sans white" font-size="12" font-weight="700">MarkFlow</text>
-  <text x="510" y="132" class="sans light" font-size="12">, a fast,</text>
-  <text x="383" y="148" class="sans light" font-size="12">distraction-free Markdown editor.</text>
-  <text x="383" y="172" class="sans heading" font-size="15">Features</text>
-  <!-- List items -->
-  <circle cx="391" cy="191" r="3" fill="#6b7280"/>
-  <text x="402" y="195" class="sans light" font-size="12">Live split-pane preview</text>
-  <circle cx="391" cy="209" r="3" fill="#6b7280"/>
-  <text x="402" y="213" class="sans light" font-size="12">Formatting toolbar</text>
-  <circle cx="391" cy="227" r="3" fill="#6b7280"/>
-  <text x="402" y="231" class="sans light" font-size="12">Export to HTML or </text>
-  <rect x="527" y="220" width="28" height="14" rx="3" fill="#1f2937"/>
-  <text x="541" y="231" class="mono" fill="#e2e8f0" font-size="11" text-anchor="middle">.md</text>
+  <!-- Preview pane -->
+  <rect x="381" y="120" width="419" height="320" fill="#0f0f18"/>
+  <!-- Prose content -->
+  <text x="404" y="148" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="20" font-weight="700" fill="#f1f5f9">Getting Started</text>
+  <line x1="404" y1="154" x2="768" y2="154" stroke="#1e2030" stroke-width="1"/>
+  <text x="404" y="172" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12.5" fill="#94a3b8">Welcome to </text>
+  <text x="480" y="172" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12.5" font-weight="700" fill="#e2e8f0">MarkFlow</text>
+  <text x="528" y="172" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12.5" fill="#94a3b8">, a fast,</text>
+  <text x="404" y="188" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12.5" fill="#94a3b8">distraction-free editor.</text>
+
+  <text x="404" y="216" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="16" font-weight="600" fill="#e2e8f0">Features</text>
+
+  <!-- List -->
+  <circle cx="416" cy="236" r="2.5" fill="#4b5280"/>
+  <text x="428" y="240" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12.5" fill="#94a3b8">Live split-pane preview</text>
+  <circle cx="416" cy="256" r="2.5" fill="#4b5280"/>
+  <text x="428" y="260" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12.5" fill="#94a3b8">Formatting toolbar</text>
+  <circle cx="416" cy="276" r="2.5" fill="#4b5280"/>
+  <text x="428" y="280" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12.5" fill="#94a3b8">Export to </text>
+  <rect x="490" y="268" width="36" height="16" rx="4" fill="#1a1a2e"/>
+  <text x="508" y="280" font-family="'SF Mono', monospace" font-size="10" fill="#4ade80" text-anchor="middle">HTML</text>
+  <text x="530" y="280" font-family="-apple-system, sans-serif" font-size="12.5" fill="#94a3b8"> or </text>
+  <rect x="554" y="268" width="28" height="16" rx="4" fill="#1a1a2e"/>
+  <text x="568" y="280" font-family="'SF Mono', monospace" font-size="10" fill="#4ade80" text-anchor="middle">.md</text>
+
   <!-- Code block -->
-  <rect x="383" y="248" width="332" height="56" rx="6" class="code-bg"/>
-  <text x="395" y="263" class="mono muted" font-size="10">javascript</text>
-  <text x="395" y="281" class="mono green" font-size="12">const</text>
-  <text x="427" y="281" class="mono light" font-size="12"> msg = </text>
-  <text x="469" y="281" class="mono" fill="#fbbf24" font-size="12">'hello world'</text>
+  <rect x="404" y="296" width="356" height="60" rx="8" fill="#0a0a12"/>
+  <rect x="404" y="296" width="356" height="60" rx="8" fill="none" stroke="#1e1e2e" stroke-width="1"/>
+  <rect x="404" y="296" width="356" height="22" rx="8" fill="#111120"/>
+  <rect x="404" y="308" width="356" height="10" fill="#111120"/>
+  <text x="418" y="311" font-family="-apple-system, sans-serif" font-size="9" fill="#4b5280">javascript</text>
+  <text x="418" y="332" font-family="'SF Mono', monospace" font-size="11.5" fill="#fb923c">const</text>
+  <text x="454" y="332" font-family="'SF Mono', monospace" font-size="11.5" fill="#e2e8f0"> msg = </text>
+  <text x="498" y="332" font-family="'SF Mono', monospace" font-size="11.5" fill="#fbbf24">'hello'</text>
+  <text x="418" y="348" font-family="'SF Mono', monospace" font-size="11.5" fill="#94a3b8">// live rendered preview</text>
 
   <!-- Status bar -->
-  <rect x="0" y="408" width="740" height="32" fill="#1f2937"/>
-  <line x1="0" y1="408" x2="740" y2="408" stroke="#374151" stroke-width="1"/>
-  <text x="20" y="428" class="sans muted" font-size="11">Words: 24</text>
-  <text x="100" y="428" class="sans muted" font-size="11">Characters: 142</text>
-  <text x="216" y="428" class="sans muted" font-size="11">Lines: 14</text>
-  <text x="288" y="428" class="sans muted" font-size="11">~1 min read</text>
+  <rect x="0" y="440" width="800" height="40" fill="#0b0b12"/>
+  <rect x="0" y="440" width="800" height="1" fill="#1e1e2e"/>
+  <text x="16" y="464" font-family="-apple-system, sans-serif" font-size="11" fill="#3d3d5c">Words: 24</text>
+  <text x="90" y="464" font-family="-apple-system, sans-serif" font-size="11" fill="#2d2d48">·</text>
+  <text x="102" y="464" font-family="-apple-system, sans-serif" font-size="11" fill="#3d3d5c">Characters: 142</text>
+  <text x="206" y="464" font-family="-apple-system, sans-serif" font-size="11" fill="#2d2d48">·</text>
+  <text x="218" y="464" font-family="-apple-system, sans-serif" font-size="11" fill="#3d3d5c">Lines: 14</text>
+  <text x="280" y="464" font-family="-apple-system, sans-serif" font-size="11" fill="#2d2d48">·</text>
+  <text x="292" y="464" font-family="-apple-system, sans-serif" font-size="11" fill="#3d3d5c">~1 min read</text>
+  <!-- Status right -->
+  <text x="620" y="464" font-family="-apple-system, sans-serif" font-size="11" fill="#3d3d5c">Markdown</text>
+  <text x="690" y="464" font-family="-apple-system, sans-serif" font-size="11" fill="#2d2d48">·</text>
+  <text x="702" y="464" font-family="-apple-system, sans-serif" font-size="11" fill="#6366f1">Saved</text>
 </svg>
